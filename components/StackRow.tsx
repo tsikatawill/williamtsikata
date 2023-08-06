@@ -1,14 +1,15 @@
 import { StackList } from "@/lib/StackList";
 import Image from "next/image";
+import Container from "./Container";
 
 const StackRow = () => {
   return (
-    <>
-      <div className="w-full overflow-x-scroll scrollbar-hidden">
-        <div className="flex gap-5 justify-center">
+    <Container>
+      <div className="flex overflow-x-scroll scrollbar-hidden">
+        <div className="flex w-fit gap-5 mx-auto">
           {StackList.map((item, index) => (
             <div
-              className="h-24 w-24 filter grayscale hover:grayscale-0 transition-all duration-200 ease-out  grid place-content-center flex-shrink-0"
+              className="w-24 h-24 flex-shrink-0 filter grayscale hover:grayscale-0 transition-all duration-200 ease-out"
               key={index}
               title={item.name}
             >
@@ -22,8 +23,9 @@ const StackRow = () => {
           ))}
         </div>
       </div>
+
       <div className="w-20 block md:hidden rounded-full mx-auto h-2 animate-to-fro bg-primary mt-3"></div>
-    </>
+    </Container>
   );
 };
 
