@@ -9,6 +9,7 @@ body {
 
 body {
   @apply bg-dark text-white;
+  background: url(/images/bg.jpg);
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
