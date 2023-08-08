@@ -5,21 +5,21 @@ import { HeadingStyles } from "@/lib/styles";
 import Button from "./Button";
 import ContactForm from "./ContactForm";
 import SocialPill from "./SocialPill";
-import { SocialMediaLinks } from "@/lib/SocialMediaLinks";
+import { getSocialLinks } from "@/sanity/queries";
 
-const Contact = () => {
+const Contact = async () => {
+  const socialLinks = await getSocialLinks();
+
   return (
     <SectionLayout name="contact" title="Reach out to me">
       <Container className="grid grid-cols-1 sm:grid-cols-2 gap-10 items-center">
         <div className="flex flex-wrap max-w-sm mx-auto gap-5 justify-center">
-          {SocialMediaLinks.map(({ name, icon, link }, index) => (
-            <SocialPill key={index} name={name} icon={icon} link={link} />
+          {socialLinks.map((item, index) => (
+            <SocialPill key={index} socialLink={item} />
           ))}
         </div>
 
-        <div>
-          <ContactForm />
-        </div>
+        <ContactForm />
       </Container>
     </SectionLayout>
   );

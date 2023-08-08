@@ -5,48 +5,62 @@ import Image from "next/image";
 import { HeadingStyles } from "@/lib/styles";
 import Link from "next/link";
 import { BsFire, BsGithub } from "react-icons/bs";
+import { getProjects } from "@/sanity/queries";
+import { urlForImage } from "@/sanity/lib/image";
 
-const Projects = () => {
+const Projects = async () => {
+  const projects = await getProjects();
+
+  console.log({ projects });
+
   return (
     <SectionLayout name="projects" title="Projects I've built">
-      <Container className="grid grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] gap-5">
-        {Array.from({ length: 6 }).map((_, index) => (
-          <div
-            key={index}
-            className="bg-secondary border-secondary border rounded-md overflow-hidden"
-          >
-            <div className="h-48 sm:h-36 overflow-hidden bg-slate-200 w-full">
-              <Image
-                className="w-full h-full object-cover"
-                src="/images/project.png"
-                width={300}
-                height={200}
-                alt="..."
-              />
-            </div>
-            <div className="h- p-3">
-              <div className="flex justify-between">
-                <h3 className={HeadingStyles.size.small}>Willfolio Project</h3>
+      <Container className="grid grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] justify-center gap-5">
+        {projects.length > 0 &&
+          projects.map(
+            ({ name, image, description, live_link, code_link }, index) => (
+              <div
+                key={index}
+                className="bg-secondary shadow shadow-slate-900 border-secondary hover:border-gray-800  transition-all duration-200  border rounded-md overflow-hidden"
+              >
+                <div className="h-48 sm:h-36 overflow-hidden bg-slate-200 w-full">
+                  <Image
+                    className="w-full h-full object-cover"
+                    src={urlForImage(image).url()}
+                    placeholder="blur"
+                    blurDataURL="images/project.png"
+                    width={300}
+                    height={200}
+                    alt={name}
+                  />
+                </div>
+                <div className="h- p-3">
+                  <div className="flex justify-between">
+                    <h3 className={HeadingStyles.size.small}>{name}</h3>
 
-                <div className="w-fit flex gap-2 items-center">
-                  <Link href="/">
-                    <BsFire size={20} />
-                  </Link>
+                    <div className="w-fit flex gap-2 items-center">
+                      <Link href={live_link}>
+                        <BsFire size={20} />
+                      </Link>
 
-                  <Link href="/">
-                    <BsGithub size={19} />
-                  </Link>
+                      {code_link && (
+                        <Link href={code_link}>
+                          <BsGithub size={19} />
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+
+                  <p className="line-clamp-3 text-grayy">{description}</p>
                 </div>
               </div>
-
-              <p className="line-clamp-3 text-grayy">
-                hic optio deserunt commodi impedit quidem minima unde ullam.
-                Quod dignissimos ea velit fugiat libero voluptatum eius corporis
-                tempora nihil saepe!
-              </p>
-            </div>
-          </div>
-        ))}
+            )
+          )}
+        {!projects.length && (
+          <p className="text-center text-grayy max-w-sm mx-auto col-[1/-1]">
+            Working on adding some projects
+          </p>
+        )}
       </Container>
     </SectionLayout>
   );

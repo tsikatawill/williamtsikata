@@ -1,23 +1,26 @@
-import { StackList } from "@/lib/StackList";
-import Image from "next/image";
 import Container from "./Container";
+import { Stack } from "@/types";
+import { urlForImage } from "@/sanity/lib/image";
+import Image from "next/image";
 
-const StackRow = () => {
+const StackRow = ({ stack }: { stack: Stack[] }) => {
   return (
     <Container>
       <div className="flex overflow-x-scroll scrollbar-hidden">
         <div className="flex w-fit gap-5 mx-auto">
-          {StackList.map((item, index) => (
+          {stack.map(({ title, image }, index) => (
             <div
-              className="w-24 h-24 flex-shrink-0 filter grayscale hover:grayscale-0 transition-all duration-200 ease-out"
               key={index}
-              title={item.name}
+              className="w-24 h-24 flex-shrink-0 filter grayscale hover:grayscale-0 transition-all duration-200 ease-out"
+              title={title}
             >
               <Image
-                src={item.image}
+                src={urlForImage(image).url()}
                 width={128}
                 height={128}
-                alt={item.name}
+                placeholder="blur"
+                blurDataURL="images/stack/react.svg"
+                alt={title}
               />
             </div>
           ))}

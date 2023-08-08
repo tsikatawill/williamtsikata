@@ -71,7 +71,10 @@ const ContactForm = () => {
   };
 
   return (
-    <form className="max-w-md mx-auto sm:mx-0" onSubmit={handleSubmit}>
+    <form
+      className="max-w-sm sm:max-w-md w-full mx-auto sm:mx-0"
+      onSubmit={handleSubmit}
+    >
       <div className="text-center mb-2">
         <legend className={HeadingStyles.size.base}>Send an email</legend>
         <small className="text-red-500">All fields are required</small>
