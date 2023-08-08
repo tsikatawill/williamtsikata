@@ -11,8 +11,6 @@ import { urlForImage } from "@/sanity/lib/image";
 const Projects = async () => {
   const projects = await getProjects();
 
-  console.log({ projects });
-
   return (
     <SectionLayout name="projects" title="Projects I've built">
       <Container className="grid grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] justify-center gap-5">
