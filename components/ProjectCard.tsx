@@ -16,7 +16,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <div
       onClick={() => goTo(live_link)}
-      className="bg-secondary cursor-pointer shadow shadow-slate-900 border-secondary hover:border-gray-800  transition-all duration-200  border rounded-md overflow-hidden"
+      className="bg-secondary cursor-pointer shadow shadow-slate-900 border-secondary hover:border-gray-500  transition-all duration-150 ease-out  border rounded-md overflow-hidden"
     >
       <div className="h-48 sm:h-36 overflow-hidden bg-slate-200 w-full">
         <Image
@@ -35,7 +35,12 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
           <div className="w-fit flex gap-2 items-center">
             {code_link && (
-              <Link href={code_link}>
+              <Link
+                href={code_link}
+                target="_blank"
+                rel="noreferrer"
+                onClick={(e) => e.stopPropagation()}
+              >
                 <BsGithub size={19} />
               </Link>
             )}
