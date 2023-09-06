@@ -1,8 +1,5 @@
-import { cn } from "@/lib/utils";
 import Container from "./Container";
 import SectionLayout from "./SectionLayout";
-import { HeadingStyles } from "@/lib/styles";
-import Button from "./Button";
 import ContactForm from "./ContactForm";
 import SocialPill from "./SocialPill";
 import { getSocialLinks } from "@/sanity/queries";
