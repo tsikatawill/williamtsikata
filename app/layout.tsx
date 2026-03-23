@@ -1,3 +1,4 @@
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import NextRouteProgress from "next-route-progress";
@@ -49,7 +50,9 @@ export default function RootLayout({
           height={5}
           transitionDuration={300}
         />
-        <main>{children}</main>
+        <TooltipProvider>
+          <main>{children}</main>
+        </TooltipProvider>
       </body>
     </html>
   );
