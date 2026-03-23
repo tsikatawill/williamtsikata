@@ -1,5 +1,17 @@
 import { Akpe } from "@/components/akpe";
 import { MessageMediums } from "@/components/message-mediums";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with William Tsikata — whether you want to collaborate, ask a question, or just say hi.",
+  openGraph: {
+    title: "Contact | William Tsikata",
+    description:
+      "Get in touch with William Tsikata — whether you want to collaborate, ask a question, or just say hi.",
+  },
+};
 
 export default function Contact() {
   return (

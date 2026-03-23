@@ -23,8 +23,32 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Willfolio",
-  description: "Willfolio by William Tsikata",
+  title: {
+    default: "William Tsikata — Software Developer",
+    template: "%s | William Tsikata",
+  },
+  description:
+    "Software developer building thoughtful, accessible web experiences. Explore my projects, blog, and get in touch.",
+  metadataBase: new URL("https://williamtsikata.com"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "William Tsikata",
+    title: "William Tsikata — Software Developer",
+    description:
+      "Software developer building thoughtful, accessible web experiences. Explore my projects, blog, and get in touch.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@dev_willman",
+    title: "William Tsikata — Software Developer",
+    description:
+      "Software developer building thoughtful, accessible web experiences.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
