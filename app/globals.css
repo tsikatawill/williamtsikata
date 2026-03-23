@@ -145,7 +145,7 @@
     @apply scroll-smooth font-sans;
   }
   .container {
-    @apply mx-auto w-full max-w-4xl px-5 md:px-2;
+    @apply mx-auto w-full max-w-4xl! px-5 md:px-2;
   }
 }
 
